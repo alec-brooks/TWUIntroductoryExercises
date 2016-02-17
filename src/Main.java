@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class IntroductoryExercises {
     public static void main(String[] args){
         //Triangle Exercises
@@ -18,7 +21,12 @@ class IntroductoryExercises {
         printDiamondName(5, "Alec");
 
         //FizzBuzz
+        System.out.println("Fizz Buzz");
         fizzBuzz();
+
+        //Prime Factors
+        System.out.println("Prime Factorisation");
+        System.out.println(generate(5959));
     }
 
     //Triangle Exercises
@@ -125,4 +133,21 @@ class IntroductoryExercises {
     }
 
     //Prime Factors
+    //Uses Trial Division method of factorization
+    public static List<Integer> generate(int n){
+        List<Integer> factors = new ArrayList<Integer>();
+        //Start divisor at first prime
+        int divisor = 2;
+
+        while(n > 1){
+            //Divide n by divisor until no longer divisible by it
+            //This ensures that only primes are added to factors
+            while(n % divisor == 0){
+                factors.add(divisor);
+                n /= divisor;
+            }
+            divisor++;
+        }
+        return factors;
+    }
 }
